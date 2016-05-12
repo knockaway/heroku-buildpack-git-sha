@@ -3,4 +3,4 @@
 
 # As this buildpack is intended to be used with composable buildpacks.
 # when it is included it should be run, so never "exit 1"
-exit 0
+echo "git-sha" && exit 0

@@ -4,28 +4,14 @@
 # Parameters
 BUILD_DIR=$1
 CACHE_DIR="${2}/${STACK}"
-ENV_DIR=$3
-PROFILE_PATH="$BUILD_DIR/.profile.d/git-sha.sh"
 
 # Fail fast
 set -e
 
-# Functions
-function create_env() {
-  # populate profile.d
-  mkdir -p $(dirname $PROFILE_PATH)
-}
+PROFILE_PATH="$BUILD_DIR/.profile.d/git-sha.sh"
+mkdir -p $(dirname $PROFILE_PATH)
 
-function write_profile() {
-  echo "-----> Writing SOURCE_VERSION ($SOURCE_VERSION) to $PROFILE_PATH"
-  echo "export GIT_SHA=\"$SOURCE_VERSION\"" >> $PROFILE_PATH
-}
+echo "-----> Writing SOURCE_VERSION ($SOURCE_VERSION) to $PROFILE_PATH"
+echo "export GIT_SHA=\"$SOURCE_VERSION\"" >> $PROFILE_PATH
 
-# Display some information
-echo "Building git-sha"
-
-# Do work
-create_env
-write_profile
-
-echo "-----> Building git-sha done"
+echo "-----> git-sha done"
